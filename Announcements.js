@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function() {
             title: "Upcoming Event",
             image: "images/Minecraft_airport_image.jpg",
             content: "Join us for our upcoming event happening next week. Stay tuned for more details!",
-            video: "https://file.io/vVut7GFhyCzr"
+            video: "videos/stanstedAirportVideo.mp4"
         },
         // Add more announcements as needed
     ];
