@@ -1,0 +1,26 @@
+.game-page-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.game-page-nav a {
+    display: inline-block;
+    min-width: 140px;
+    padding: 10px 20px;
+    text-align: center;
+    background-color: var(--accent-color);
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    font-family: 'Press Start 2P', cursive, Arial, sans-serif;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.game-page-nav a:hover {
+    background-color: var(--accent-light);
+}

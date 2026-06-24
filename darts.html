@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Darts Game</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="darts.css">
+</head>
+<body>
+    <nav class="game-page-nav">
+        <a href="games.html">← Games</a>
+        <a href="index.html">Home</a>
+    </nav>
+    <div id="dartsGameContainer" class="game-container active">
+        <div class="header">
+            <h1>Darts Game</h1>
+            <button id="dartsSettingsBtn" class="settings-btn" type="button" aria-label="Settings">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </button>
+        </div>
+        <div class="game-info">
+            <div class="score">Round: <span id="dartsRound">1</span>/3</div>
+            <div class="score points-score">Points: <span id="dartsScore">0</span></div>
+        </div>
+        <div class="darts-game-area">
+            <div class="darts-board-container">
+                <canvas id="dartsCanvas" width="500" height="500"></canvas>
+                <div id="targetCircle" class="target-circle hidden"></div>
+            </div>
+            <div id="verticalSlider" class="slider-container vertical-slider">
+                <div class="slider-label">Vertical Aim</div>
+                <div class="slider-track">
+                    <div id="verticalHandle" class="slider-handle"></div>
+                </div>
+                <div class="slider-instruction">Click when ready!</div>
+            </div>
+            <div id="horizontalSlider" class="slider-container horizontal-slider">
+                <div class="slider-label">Horizontal Aim</div>
+                <div class="slider-track">
+                    <div id="horizontalHandle" class="slider-handle"></div>
+                </div>
+                <div class="slider-instruction">Click at the right time!</div>
+            </div>
+        </div>
+        <div class="game-controls">
+            <button id="dartsStartBtn">Start Game</button>
+            <button id="dartsThrowBtn" class="hidden" disabled>Throw Dart</button>
+            <button id="dartsNextRoundBtn" class="hidden" disabled>Next Round</button>
+            <button id="dartsRestartBtn" disabled>Restart</button>
+        </div>
+        <div class="instructions">
+            <p><strong>How to Play:</strong> Click when the slider is in position, then aim and throw!</p>
+            <p>Bullseye = 50 points, Inner ring = 25 points, Outer rings = 5–15 points</p>
+        </div>
+        <div id="dartsGameOver" class="game-over hidden">
+            <h2>Game Over!</h2>
+            <div class="final-scores">
+                <p>Final Score: <span id="finalDartsScore">0</span> points</p>
+            </div>
+            <button id="dartsPlayAgainBtn">Play Again</button>
+        </div>
+    </div>
+
+    <div id="settingsPanel" class="settings-panel hidden">
+        <div class="settings-content">
+            <div class="settings-header">
+                <h3>Settings</h3>
+                <button id="closeSettings" class="close-btn" type="button" aria-label="Close settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="settings-body">
+                <div id="dartsSettings" class="game-settings">
+                    <div class="setting-item">
+                        <label>Theme</label>
+                        <div class="theme-selector">
+                            <div class="theme-option" data-theme="dark">
+                                <div class="theme-preview dark-preview"></div>
+                                <span>Dark</span>
+                            </div>
+                            <div class="theme-option" data-theme="purple">
+                                <div class="theme-preview purple-preview"></div>
+                                <span>Purple</span>
+                            </div>
+                            <div class="theme-option" data-theme="green">
+                                <div class="theme-preview green-preview"></div>
+                                <span>Green</span>
+                            </div>
+                            <div class="theme-option" data-theme="neon">
+                                <div class="theme-preview neon-preview"></div>
+                                <span>Neon</span>
+                            </div>
+                            <div class="theme-option" data-theme="blueeeee">
+                                <div class="theme-preview blueeeee-preview"></div>
+                                <span>Blueeeee</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="darts.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.dartsGame = new DartsGame();
+            initSettingsPanel('dartsSettingsBtn', window.dartsGame);
+        });
+    </script>
+</body>
+</html>
