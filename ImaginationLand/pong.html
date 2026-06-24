@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="pong.css">
+</head>
+<body>
+    <nav class="game-page-nav">
+        <a href="games.html">← Games</a>
+        <a href="index.html">Home</a>
+    </nav>
+    <div id="pongGameContainer" class="game-container active">
+        <div class="header">
+            <h1>Pong Game</h1>
+            <button id="pongSettingsBtn" class="settings-btn" type="button" aria-label="Settings">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+            </button>
+        </div>
+        <div class="game-info">
+            <div class="pong-scores">
+                <div class="score player-score">
+                    <span>You: <span id="pongPlayerScore">0</span></span>
+                </div>
+                <div class="score ai-score">
+                    <span>AI: <span id="pongAiScore">0</span></span>
+                </div>
+            </div>
+            <div class="score points-score">
+                <span>Points: </span>
+                <span id="pongPointsScore">0</span>
+            </div>
+        </div>
+        <canvas id="pongCanvas" width="600" height="400"></canvas>
+        <div class="game-controls">
+            <button id="pongStartBtn">Start Game</button>
+            <button id="pongPauseBtn" disabled>Pause</button>
+            <button id="pongRestartBtn" disabled>Restart</button>
+        </div>
+        <div class="instructions">
+            <p><strong>How to Play:</strong> Use ↑↓ arrow keys or W/S keys to move your paddle</p>
+            <p>Score points by hitting the ball past your opponent. First to 11 wins!</p>
+            <p>Earn 5 points per score and 50 bonus points for winning!</p>
+        </div>
+        <div id="pongGameOver" class="game-over hidden">
+            <h2 id="pongGameOverTitle">Game Over!</h2>
+            <div class="final-scores">
+                <p id="pongGameOverMessage"></p>
+                <p>Your Score: <span id="finalPongPlayerScore">0</span></p>
+                <p>AI Score: <span id="finalPongAiScore">0</span></p>
+                <p>Points: <span id="finalPongPoints">0</span></p>
+            </div>
+            <button id="pongPlayAgainBtn">Play Again</button>
+        </div>
+    </div>
+
+    <div id="settingsPanel" class="settings-panel hidden">
+        <div class="settings-content">
+            <div class="settings-header">
+                <h3>Settings</h3>
+                <button id="closeSettings" class="close-btn" type="button" aria-label="Close settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="settings-body">
+                <div id="pongSettings" class="game-settings">
+                    <div class="setting-item">
+                        <label>Theme</label>
+                        <div class="theme-selector">
+                            <div class="theme-option" data-theme="dark">
+                                <div class="theme-preview dark-preview"></div>
+                                <span>Dark</span>
+                            </div>
+                            <div class="theme-option" data-theme="purple">
+                                <div class="theme-preview purple-preview"></div>
+                                <span>Purple</span>
+                            </div>
+                            <div class="theme-option" data-theme="green">
+                                <div class="theme-preview green-preview"></div>
+                                <span>Green</span>
+                            </div>
+                            <div class="theme-option" data-theme="neon">
+                                <div class="theme-preview neon-preview"></div>
+                                <span>Neon</span>
+                            </div>
+                            <div class="theme-option" data-theme="blueeeee">
+                                <div class="theme-preview blueeeee-preview"></div>
+                                <span>Blueeeee</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="setting-item">
+                        <label>AI Difficulty</label>
+                        <div class="difficulty-selector">
+                            <div class="difficulty-option" data-difficulty="easy">
+                                <div class="difficulty-preview easy-preview"></div>
+                                <span>Easy</span>
+                                <small>Slower reaction</small>
+                            </div>
+                            <div class="difficulty-option" data-difficulty="medium">
+                                <div class="difficulty-preview medium-preview"></div>
+                                <span>Medium</span>
+                                <small>Balanced</small>
+                            </div>
+                            <div class="difficulty-option" data-difficulty="hard">
+                                <div class="difficulty-preview hard-preview"></div>
+                                <span>Hard</span>
+                                <small>Fast reaction</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="pong.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            window.pongGame = new PongGame();
+            initSettingsPanel('pongSettingsBtn', window.pongGame);
+        });
+    </script>
+</body>
+</html>

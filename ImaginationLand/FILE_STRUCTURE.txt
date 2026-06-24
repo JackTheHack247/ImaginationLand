@@ -1,0 +1,29 @@
+Imagination Land - All files live in this folder
+===============================================
+
+HTML pages:
+  index.html, games.html, announcements.html, chat.html
+  snake.html, pool.html, darts.html, pong.html
+  doodle.html, FlappyBirdIndex.html, indexFlappyBird.html
+
+CSS (same folder):
+  styles.css, announcementsStyles.css, style2.css, styles3.css
+  FlappyBirdStyles.css, common.css, site-theme.css, game-nav.css
+  pool.css, darts.css, pong.css
+
+JS (same folder):
+  script.js, Announcements.js, dscript.js, flappyBirdScript.js
+  javascriptFlappBird.js, common.js, pool.js, darts.js, pong.js
+
+Images:
+  images/          Site photos
+  bird.png, pipe.png, snake-game-ai-gen.png
+  assets/images/pool/   Pool game images
+
+Sounds:
+  assets/sounds/   Pool game sounds
+
+Videos:
+  videos/
+
+Open index.html to start. This folder is the full project.
