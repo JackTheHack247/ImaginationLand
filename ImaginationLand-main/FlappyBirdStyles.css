@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #4ec0ca;
+    font-family: Arial, sans-serif;
+}
+
+#startScreen {
+    text-align: center;
+    color: #fff;
+}
+
+#startButton {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #f00;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+#highScore {
+    margin-top: 20px;
+    color: #fff;
+}
+
+.homeButton {
+    display: inline-block;
+    width: 200px;
+    padding: 10px 20px;
+    margin: 20px 10px;
+    text-align: center;
+    background-color: #ff9933;
+    color: #000;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 18px;
+}
